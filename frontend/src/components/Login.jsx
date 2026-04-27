@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -10,17 +13,37 @@ function Login() {
         password:"",
         
       });
+      const navigate=useNavigate();
       
     
-      const onSubmitHandler=(e)=>{
+      const onSubmitHandler=async(e)=>{
         e.preventDefault();
-        console.log(user);
-        setuser({
+        try
+    {
+      console.log(user);
+      const res=await axios.post(`http://localhost:8000/api/v1/user/login`,user,{
+        headers:{
+          'Content-Type':'application/json'
+        },
+        withCredentials:true,
+      });
+      console.log(res.data);
+      if(res.data.success){
+        navigate("/")
+        toast.success(res.data.message);
+      }
+      console.log(res);
+    }
+    catch(err){
+      toast.error(err.response.data.message);
+      console.log(err);
+    }
+        // setuser({
           
-        username:"",
-        password:"",
+        // username:"",
+        // password:"",
         
-        })
+        // })
       }
   return (
     <div className="min-w-96 mx-auto">
