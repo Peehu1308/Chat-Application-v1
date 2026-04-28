@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { setAuthUser } from "../redux/userslice";
 
 function Login() {
 
@@ -13,6 +16,7 @@ function Login() {
         password:"",
         
       });
+      const dispatch=useDispatch();
       const navigate=useNavigate();
       
     
@@ -27,12 +31,14 @@ function Login() {
         },
         withCredentials:true,
       });
-      console.log(res.data);
-      if(res.data.success){
+      // console.log(res.data);
+      // if(res.data.success){
         navigate("/")
-        toast.success(res.data.message);
-      }
-      console.log(res);
+        // toast.success(res.data.message);
+      
+      console.log(res.data);
+      dispatch(setAuthUser(res.data));
+
     }
     catch(err){
       toast.error(err.response.data.message);
