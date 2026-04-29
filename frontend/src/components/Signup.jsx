@@ -103,6 +103,7 @@ function Signup() {
             <div className="flex items-center">
               <p>Male</p>
               <input
+            
               checked={user.gender==="male"}
               onChange={()=>handleCheckbox("male")}
               type="checkbox" defaultChecked className="checkbox mx-2" />
