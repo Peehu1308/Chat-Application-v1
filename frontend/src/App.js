@@ -1,8 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import axios from "axios";
 import './App.css';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+
+// Configure axios globally
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {
