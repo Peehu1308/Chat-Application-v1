@@ -14,6 +14,9 @@ const Sidebar = () => {
             </div>
             <div className='divider px-3'>OR</div>
             <OtherUsers/>
+            <div className='mt-2'>
+                <button className='btn btn-sm bg-white p-3'>Logout</button>
+            </div>
         </form>
     </div>
   )
