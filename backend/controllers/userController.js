@@ -67,7 +67,7 @@ export const login=async(req,res)=>{
         const token=await jwt.sign(tokenData,process.env.JWT_SECRET_KEY,{expiresIn:'1d'});
         
         // const token=xy
-        return res.status(200).cookie("token",token,{maxAge:1*24*60*60,httpOnly:true,sameSite:'strict'}).json({
+        return res.status(200).cookie("token",token,{maxAge:1*24*60*60,httpOnly:true,sameSite:'lax'}).json({
             _id:user._id,
             username:user.username,
             fullName:user.fullName,
@@ -85,7 +85,7 @@ export const login=async(req,res)=>{
 
 export const logout=(req,res)=>{
     try{
-        return res.status(200).cookie("token","",{maxAge:0}).json({
+        return res.status(200).cookie("token","",{maxAge:0,sameSite:'lax'}).json({
             message:"User logged out",
 
         })
