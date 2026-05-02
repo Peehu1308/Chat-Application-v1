@@ -2,8 +2,13 @@ import React from 'react'
 import Message from './Message'
 import useGetMessages from '../hooks/useGetMessages';
 import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
 
 const Messages = () => {
+  const scroll=useRef();
+  useEffect(()=>{
+    scroll.current?.scrollIntoView({behavior:"smooth"});
+  })
   useGetMessages();
   const {messages}=useSelector(store=>store.message);
 
@@ -18,6 +23,7 @@ const Messages = () => {
             )
           })
         }
+        <div ref={scroll}></div>
         
         
     </div>
