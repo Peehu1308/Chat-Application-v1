@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   return (
     <div className='border-r border-slate-500 p-3 flex flex-col'>
-        <div action="">
+        <div>
             <div className='flex flex-row'>
                 <input type="text" className='input input-bordered rounded-l-md rounded-r-none' placeholder='Search...'/>
             <button type='submit' className='btn p-4 bg-zinc-500 rounded-l-none shadow-none text-white'>
