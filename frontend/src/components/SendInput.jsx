@@ -17,7 +17,7 @@ const SendInput = () => {
     e.preventDefault();
 
     try{
-      const res=await axios.post(`http://localhost:5000/api/v1/message/send/${selectedUser?._id}`,{message},{
+      const res=await axios.post(`http://localhost:8000/api/v1/message/send/${selectedUser?._id}`,{message},{
         headers:{
           "Content-Type":'application/json'
         },
@@ -26,7 +26,7 @@ const SendInput = () => {
       console.log("Message sent:", res.data);
       
       // Fetch updated messages after sending
-      const messagesRes=await axios.get(`http://localhost:5000/api/v1/message/${selectedUser._id}`,{
+      const messagesRes=await axios.get(`http://localhost:8000/api/v1/message/${selectedUser._id}`,{
         withCredentials:true,
       });
       dispatch(setMessages(messagesRes.data));

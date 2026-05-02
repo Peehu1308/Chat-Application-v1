@@ -10,7 +10,7 @@ const useGetOtherUsers = () => {
     useEffect(()=>{
         const fetchOtherUsers=async()=>{
             try{
-                 const res=await axios.get(`http://localhost:5000/api/v1/user/`, {
+                 const res=await axios.get(`http://localhost:8000/api/v1/user/`, {
                     withCredentials: true
                 });
                 console.log(res);

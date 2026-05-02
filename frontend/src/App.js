@@ -30,7 +30,7 @@ function App() {
   const [socket,setsocket]=useState(null);
   useEffect(()=>{
     if(authUser){
-      const socket=io("http://localhost:5000",{
+      const socket=io("http://localhost:8000",{
         transports:['websocket'],
         withCredentials:true,
       });

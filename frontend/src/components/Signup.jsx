@@ -22,7 +22,7 @@ function Signup() {
     try
     {
       console.log(user);
-      const res=await axios.post(`http://localhost:5000/api/v1/user/register`,user,{
+      const res=await axios.post(`http://localhost:8000/api/v1/user/register`,user,{
         headers:{
           'Content-Type':'application/json'
         },
