@@ -25,7 +25,7 @@ function Login() {
         try
     {
       console.log(user);
-      const res=await axios.post(`http://localhost:8000/api/v1/user/login`,user,{
+      const res=await axios.post(`http://localhost:5000/api/v1/user/login`,user,{
         headers:{
           'Content-Type':'application/json'
         },
@@ -41,8 +41,9 @@ function Login() {
 
     }
     catch(err){
-      toast.error(err.response.data.message);
       console.log(err);
+      const errorMessage = err.response?.data?.message || err.message || "Login failed";
+      toast.error(errorMessage);
     }
         // setuser({
           
