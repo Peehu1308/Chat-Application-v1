@@ -5,23 +5,23 @@ import {createSlice} from "@reduxjs/toolkit";
 const userSlice=createSlice({
     name:"user",
     initialState:{
-        authuser:null,
+        authUser:null,
         otherUsers:null,
         selectedUser:null,
     },
     reducers:{
         setAuthUser:(state,action)=>{
-            state.setAuthUser=action.payload;
+            state.authUser=action.payload;
         },
         setOtherUsers:(state,action)=>{
             state.otherUsers=action.payload;
 
     },
-    setselectedUser:(state,action)=>{
+    setSelectedUser:(state,action)=>{
         state.selectedUser=action.payload;
     }
     }
 });
 
-export const {setAuthUser,setOtherUsers,setselectedUser}=userSlice.actions;
+export const {setAuthUser,setOtherUsers,setSelectedUser}=userSlice.actions;
 export default userSlice.reducer;
