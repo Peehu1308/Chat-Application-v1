@@ -6,13 +6,16 @@ import { useDispatch } from 'react-redux'
 import { setSelectedUser } from '../redux/userslice'
 
 const MessageContainer = () => {
-    const {selectedUser}=useSelector(store=>store.user);
+    const {selectedUser,authUser}=useSelector(store=>store.user);
+
     const dispatch=useDispatch();
     useEffect(()=>{
         return ()=>dispatch(setSelectedUser(null));
     },[])
   return (
-    <div className='md:min-w-[450px] flex flex-col min-h-[400px] overflow-scroll"'>
+    <>
+    {selectedUser!==null?(
+        <div className='md:min-w-[450px] flex flex-col min-h-[400px] overflow-scroll'>
             
             <div className='flex gap-2 items-center bg-white rounded-sm p-2 cursor-pointer px-4 py-2 mmb-2'>
                 <div className='avatar avatar-online'>
@@ -32,6 +35,14 @@ const MessageContainer = () => {
             <SendInput/>
         
     </div>
+    ):(
+        <div className='md:min-w-[550px] flex flex-col justify-center p-4'>
+            <h1 className='text-3xl'>Hi,{authUser?.fullName},</h1>
+            <h1>Lets start a conversation!</h1>
+        </div>
+    )
+}
+    </>
   )
 }
 
