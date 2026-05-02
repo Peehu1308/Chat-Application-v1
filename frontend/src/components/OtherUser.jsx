@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setselectedUser } from '../redux/userslice';
+import { setSelectedUser } from '../redux/userslice';
 
 const OtherUser = ({user}) => {
     const dispatch=useDispatch();
     const {selectedUser}=useSelector(store=>store.user);
     const selectedUserHandler=(user)=>{
         console.log(user);
-        dispatch(setselectedUser(user));
+        dispatch(setSelectedUser(user));
 
     }
   return (
