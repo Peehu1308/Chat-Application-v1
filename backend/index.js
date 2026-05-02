@@ -6,10 +6,9 @@ import express from "express"; //method-2
 import connectDB from "./config/database.js";
 import messageRoute from "./routes/messageRoute.js";
 import userRoute from "./routes/userRoute.js";
+import {app, server, io} from "./socket/socket.js";
 
 dotenv.config({});
-
-const app=express();
 
 const PORT=process.env.PORT || 5000;
 // middleware
@@ -27,7 +26,7 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/message",messageRoute);
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectDB();
     console.log(`Server is running at port ${PORT}`)
 })
