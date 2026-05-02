@@ -35,9 +35,9 @@ const Sidebar = () => {
 
     const searchSubmitHandler=(e)=>{
         e.preventDefault();
-        const conversationUser=otherUsers?.find((user)=>user.fullName.tolowerCase().includes(search.tolowerCase()));
+        const conversationUser=otherUsers?.find((user)=>user.fullName.toLowerCase().includes(search.toLowerCase()));
         if(conversationUser){
-            dispatch(setOtherUsers(conversationUser));
+            dispatch(setOtherUsers([conversationUser]));
         }
         else{
             toast.error("No user found with that name");
@@ -57,7 +57,7 @@ const Sidebar = () => {
                 placeholder="Search..."
             />
             <button
-                onSubmit={searchSubmitHandler}
+                onClick={searchSubmitHandler}
                 type="submit"
                 className="btn p-4 bg-zinc-500 rounded-l-none shadow-none text-white"
             >
