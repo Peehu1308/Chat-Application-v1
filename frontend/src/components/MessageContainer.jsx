@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SendInput from './SendInput'
 import Messages from './Messages'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setSelectedUser } from '../redux/userslice'
 
 const MessageContainer = () => {
-    const {selectedUser}=useSelector(store=>store.user)
+    const {selectedUser}=useSelector(store=>store.user);
+    const dispatch=useDispatch();
+    useEffect(()=>{
+        return ()=>dispatch(setSelectedUser(null));
+    },[])
   return (
     <div className='md:min-w-[450px] flex flex-col min-h-[400px] overflow-scroll"'>
             
