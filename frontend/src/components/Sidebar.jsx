@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import OtherUsers from "./OtherUsers";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setOtherUsers } from "../redux/userslice";
+import { setAuthUser, setOtherUsers } from "../redux/userslice";
 import socket from "../App.js";
 
 const Sidebar = () => {
@@ -18,8 +18,10 @@ const Sidebar = () => {
         const res = await axios.get(`http://localhost:8000/api/v1/user/logout`, {
             withCredentials: true,
         });
+
         console.log("Logout success");
         toast.success(res.data.message);
+        dispatch(setAuthUser(null));
         setTimeout(() => {
             navigate("/login");
         }, 500);
