@@ -1,5 +1,6 @@
 import { Conversation } from "../models/conversationModel.js";
 import { Message } from "../models/messageModel.js";
+import { getReceiverSocketId } from "../socket/socket.js";
 
 export const sendMessage=async(req,res)=>{
     try{
@@ -36,7 +37,7 @@ export const sendMessage=async(req,res)=>{
         const reciversocketId=getReceiverSocketId(receiverId);
         if(receiverSocketId){
             io.to(receiverSocketId).emit("mewMessage",newMessage);
-            
+
         }
 
         return res.status(201).json({
