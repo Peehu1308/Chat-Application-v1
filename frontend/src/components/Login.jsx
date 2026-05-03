@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import socket from "../App.js";
 import { setAuthUser } from "../redux/userslice";
 
 function Login() {
@@ -38,6 +38,7 @@ function Login() {
       
       console.log(res.data);
       dispatch(setAuthUser(res.data));
+     
 
     }
     catch(err){

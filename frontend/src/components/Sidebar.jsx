@@ -6,6 +6,7 @@ import OtherUsers from "./OtherUsers";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOtherUsers } from "../redux/userslice";
+import socket from "../App.js";
 
 const Sidebar = () => {
     const [search,setsearch]=useState("");
@@ -22,6 +23,7 @@ const Sidebar = () => {
         setTimeout(() => {
             navigate("/login");
         }, 500);
+        
         } catch (err) {
         console.log("Logout error:", err.response?.status, err.response?.data);
         // Even if logout fails, still clear user and navigate
