@@ -33,6 +33,12 @@ export const sendMessage=async(req,res)=>{
         }
         await gotConversation.save();
         // SOCEKT IO
+        const reciversocketId=getReceiverSocketId(receiverId);
+        if(receiverSocketId){
+            io.to(receiverSocketId).emit("mewMessage",newMessage);
+            
+        }
+
         return res.status(201).json({
            newMessage,
         })
